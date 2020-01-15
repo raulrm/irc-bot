@@ -1,0 +1,1 @@
+ver tutorial en https://www.techbeamers.com/create-python-irc-bot/
