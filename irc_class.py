@@ -6,7 +6,7 @@ class IRC:
     irc = socket.socket()
 
     def __init__(self):
-        self irc = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        self.irc = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
     def send(self, channel, msg):
         self.irc.send(bytes("PRIVMSG " + channel + " " + msg + "\n", "UTF-8"))
@@ -26,9 +26,10 @@ class IRC:
         time.sleep(1)
 
         resp = self.irc.recv(2040).decode("UTF-8")
+        #resp = decode(self.irc.recv(2040),"UTF-8")
 
         if resp.find('PING') != -1: 
-            self.irc.send(bytes('PONG ' + resp.split().decode("UTF-8") [1] + '\r\n', "UTF-8"))
+            self.irc.send(bytes('PONG ' + resp.split()[1] + '\r\n', "UTF-8"))
 
         return resp
 

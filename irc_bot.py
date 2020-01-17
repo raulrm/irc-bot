@@ -5,11 +5,14 @@ import random
 
 
 irc = IRC()
-irc.connect(server, port, channel, botnick, botpass, botnickpass)
+#irc.connect(cfg.server, cfg.port, cfg.channel, cfg.botnick, cfg.botpass, cfg.botnickpass)
+
+irc.connect("irc.freenode.net", 6667, "#raulrm", "KeimaKat", "b0nd10l4", "nose")
+
 
 while True:
     text = irc.get_response()
     print(text)
  
-    if "PRIVMSG" in text and channel in text and "hello" in text:
-        irc.send(channel, "Hello!")
+    if "PRIVMSG" in text and "#raulrm" in text and "hola" in text:
+        irc.send("#raulrm", "Hola!")
